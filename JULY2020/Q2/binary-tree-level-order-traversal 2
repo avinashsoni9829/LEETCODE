@@ -1,0 +1,36 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+ #define pb push_back;
+class Solution {
+public:
+    vector<vector<int>> levelOrderBottom(TreeNode* root) {
+      vector<vector<int>>levels;
+      levelOrderBottom(root,0,levels);
+      reverse(levels.begin(),levels.end());
+      return levels;
+
+    }
+
+    void levelOrderBottom(TreeNode * root,int l,vector<vector<int>>&levels)
+    {
+      if(!root)
+      return;
+
+      if(l>=levels.size())
+      levels.pb(vector<int>(1,root->val));
+      else
+      levels[l].pb(root->val);
+
+      levelOrderBottom(root->left,l+1,levels);
+      levelOrderBottom(root->right,l+1,levels);
+    }
+};
