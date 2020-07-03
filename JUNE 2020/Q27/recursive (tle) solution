@@ -1,0 +1,56 @@
+/*
+this can be solved using
+1) recursion+ memoization
+
+2) dynamic programming
+
+3) bachets conjecture  (langrages 4 square theorem)
+
+4) legendre 3 square theorem
+
+* * langrages 4 square thorem says that :
+
+every natural no can be represented as the sum of 4 integer squares
+for our question our ans will lie in 1 to 4 according to this lemma
+
+
+* * legendre 3 square theorem
+
+a  natural number can be represented as sum of 3 square of integer
+
+N = pow(a,2) + pow(b,2) + pow(c,2)
+
+if and only if N is not in the form of
+
+  pow(4,a)(8*b+7)
+
+
+  now we can check if the number is of the given type and solve it accordingly
+*/
+
+
+//[recursion Solution]
+
+class Solution {
+
+      int solve(int n){
+
+        if(n<=3)
+        return n;
+        int ans=n;
+        for(int i=1;i*i<=n;++i)
+        {
+          ans=min(ans,1+solve(n-(i*i)));
+        }
+        return ans;
+      }
+public:
+    int numSquares(int n) {
+      return solve(n);
+
+
+
+    }
+};
+
+//note : this will give TLE
