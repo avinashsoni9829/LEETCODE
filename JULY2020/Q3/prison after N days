@@ -1,0 +1,31 @@
+class Solution {
+public:
+    vector<int> prisonAfterNDays(vector<int>& cells, int N)
+    {
+         vector<int>a(8,0);
+         vector<vector<int>>check;
+
+        while(N--)
+        {
+             for(int i=1;i<7;++i)
+             {
+               if(cells[i-1]^cells[i+1])
+               a[i]=0;
+               else
+               a[i]=1;
+             }
+
+            if(check.size()&& check.front()==a)
+
+            {
+                return check[N % check.size()];
+            }
+            else
+            check.push_back(a);
+
+            cells = a;
+        }
+
+        return cells;
+    }
+};
