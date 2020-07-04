@@ -1,0 +1,34 @@
+class Solution {
+public:
+    
+   
+    int nthUglyNumber(int n) {
+      int dp[n];
+      int idx2=0,idx3=0,idx5=0;
+      int m2=2,m3=3,m5=5;
+      int ans=1;
+      dp[0]=1;
+      for(int i=1;i<n;++i)
+      {
+        ans=min({m2,m3,m5});
+        dp[i]=ans;
+        if(ans==m2)
+        {
+          idx2+=1;
+          m2=dp[idx2]*2;
+        }
+        if(ans==m3)
+        {
+          idx3+=1;
+          m3=dp[idx3]*3;
+        }
+        if(ans==m5)
+        {
+          idx5+=1;
+          m5=dp[idx5]*5;
+        }
+      }
+      return ans;
+
+    }
+};
