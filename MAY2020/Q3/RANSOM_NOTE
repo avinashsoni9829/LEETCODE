@@ -1,0 +1,36 @@
+class Solution {
+public:
+    
+   
+    bool canConstruct(string r, string s) {
+        
+        map<char,int>mp1;
+        map<char,int>mp2;
+        
+        for(int i=0;i<(int)r.length();++i)
+        {
+            mp1[r[i]]++;
+            
+        }
+        
+        for(int i=0;i<(int)s.length();++i)
+        {
+            mp2[s[i]]++;
+            
+        }
+        
+        for(int i=0;i<(int)r.length();++i)
+        {
+            if(mp2[r[i]]>=mp1[r[i]])
+                continue;
+            else
+                return false;
+            
+        }
+        
+        return true;
+        
+       
+      
+    }
+};
