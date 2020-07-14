@@ -1,8 +1,36 @@
+/*
+
+can be done done using O(sqrt(N))
+using binary_search in O(log(sqrt(N)))
+
+
+*/
+#define ll long long int
 class Solution {
 public:
     bool isPerfectSquare(int num) {
-        if(sqrt(num)==ceil(sqrt(num)))
-            return true;
-        return false;
+      ll high=1e5;
+      ll low=1;
+      ll mid;
+      ll tmp;
+
+      while(low<=high)
+      {
+        mid=low+(high-low)/2;
+        tmp=mid*mid;
+        if(tmp==num)
+        return true;
+        else
+        if(tmp>num)
+        {
+          high=mid-1;
+        }
+        else
+        {
+          low=mid+1;
+        }
+      }
+      return false;
     }
+
 };
