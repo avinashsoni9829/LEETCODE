@@ -1,5 +1,6 @@
 class Solution {
 public:
+    
     //time : O(1)
     //bitmasking based solution
     bool isPowerOfFour(int num) {
