@@ -1,3 +1,8 @@
+// time complexity: O(n)
+// space complexity: O(1)
+
+
+
 class Solution {
 public:
     bool detectCapitalUse(string word) {
@@ -62,3 +67,5 @@ public:
         
     }
 };
+
+
