@@ -1,57 +1,39 @@
 class Solution {
 public:
-    string evaluate(string s, vector<vector<string>>& knowledge) {
+    int reinitializePermutation(int n) {
         
-        string ans;
-        map<string,string>mp;
-        
-        int n=knowledge.size();
-        
+        vector<int>perm(n);
+        vector<int>check(n);
         for(int i=0;i<n;++i)
-        { 
-            vector<string>temp=knowledge[i];
-            
-          
-              
-            mp[temp[0]]=temp[1];
-        }
-        
-        
-        int nn=s.length();
-        
-        for(int i=0;i<nn;++i)
         {
-               if(s[i]=='(')
-               {
-                    string curr;
-                   i+=1;
-                      while(s[i]!=')' and i<nn)
-                      {
-                           
-                            curr+=s[i];
-                          i+=1;
-                           
-                      }
-                    
-                     
-                   
-                   
-                    
-                     if(mp[curr]=="")
-                         ans+="?";
-                     else
-                         ans+=mp[curr];
-                    
-               }
-            if(s[i]!=')' and s[i]!='(')
-            ans+=s[i];
+              perm[i]=i;
+              check[i]=i;
         }
         
-         return ans;
-    }
-   
+        
+        vector<int>a(n);
+        
+        int steps=0;
+        
+        while(a!=perm)
+        {
+             for(int i=0;i<n;++i)
+             {
+                   if(i%2==0) a[i]=check[i/2];
+                   else
+                         a[i]=check[n/2+(i-1)/2];
+                 
+             }
+            
+             check=a;
+            
+            steps+=1;
+            
+            
+        }
+        
+        
+        return steps;
     
-        
-        
-        
-    };
+    }
+};
